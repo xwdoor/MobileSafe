@@ -51,6 +51,14 @@ public class AppInfo {
         this.description = description;
     }
 
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
+    }
+
     public String toJson() {
         return "{" +
                 "\"versionCode\":\"" + versionCode + '"' +
