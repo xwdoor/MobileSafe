@@ -98,7 +98,7 @@ public class SplashActivity extends BaseActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    startMainActivity();
+                    startHomeActivity();
                 }
             }
 
@@ -113,8 +113,8 @@ public class SplashActivity extends BaseActivity {
     /**
      * 进入主界面
      */
-    private void startMainActivity() {
-        MainActivity.startAct(SplashActivity.this);
+    private void startHomeActivity() {
+        HomeActivity.startAct(SplashActivity.this);
         finish();
     }
 
@@ -135,7 +135,7 @@ public class SplashActivity extends BaseActivity {
         builder.setNegativeButton("以后再说", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                startMainActivity();
+                startHomeActivity();
             }
         });
 
@@ -143,7 +143,7 @@ public class SplashActivity extends BaseActivity {
         builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                startMainActivity();
+                startHomeActivity();
             }
         });
         builder.show();
@@ -179,7 +179,7 @@ public class SplashActivity extends BaseActivity {
             public void onFailure(HttpException e, String s) {
                 Toast.makeText(SplashActivity.this, "下载失败", Toast.LENGTH_SHORT).show();
                 Log.i(TAG_LOG, "下载失败--->" + s);
-                startMainActivity();
+                startHomeActivity();
             }
 
             @Override
@@ -210,7 +210,7 @@ public class SplashActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //安装过程中，用户点击取消按钮
-        startMainActivity();
+        startHomeActivity();
     }
 
     /**

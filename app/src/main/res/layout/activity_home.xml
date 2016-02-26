@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.HomeActivity"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:text="功能列表"
+        style="@style/TitleBar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:ellipsize="marquee"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:text="手机安全卫士，作者：xwdoor，博客：http://blog.csdn.net/xwdoor"
+        android:layout_marginBottom="6dp"/>
+
+    <GridView
+        android:id="@+id/gv_fuction"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalSpacing="15dp"
+        android:numColumns="3"/>
+</LinearLayout>
