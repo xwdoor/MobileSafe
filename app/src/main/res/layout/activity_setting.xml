@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xwdoor="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TitleBar"
+        android:text="设置"/>
+
+    <!-- 自定义控件 -->
+    <net.xwdoor.mobilesafe.view.SettingItemView
+        android:id="@+id/siv_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xwdoor:stitle="自动更新设置"
+        xwdoor:desc_on="自动更新已开启"
+        xwdoor:desc_off="自动更新已关闭"/>
+</LinearLayout>

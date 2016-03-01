@@ -3,6 +3,8 @@ package net.xwdoor.mobilesafe.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import net.xwdoor.mobilesafe.R;
@@ -41,6 +43,16 @@ public class HomeActivity extends BaseActivity {
 
         HomeAdapter adapter = new HomeAdapter(this,mGvItems,mImgIds);
         gvFunction.setAdapter(adapter);
+        gvFunction.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 8:
+                        SettingActivity.startAct(HomeActivity.this);
+                        break;
+                }
+            }
+        });
     }
 
     @Override
