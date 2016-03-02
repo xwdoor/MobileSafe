@@ -3,6 +3,8 @@ package net.xwdoor.mobilesafe.base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import net.xwdoor.mobilesafe.utils.ToastUtils;
+
 /**
  * Created by XWdoor on 2016/2/24.
  * 博客：http://blog.csdn.net/xwdoor
@@ -10,11 +12,20 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class BaseActivity extends AppCompatActivity {
 
     public static final String TAG_LOG = "123123";
+    public static final String PREF_AUTO_UPDATE = "auto_update";
+    public static final String PREF_PASSWORD = "password";
+
+//    protected ToastUtils ToastUtils;
+    /** 显示提示框 */
+    public void showToast(CharSequence text){
+        ToastUtils.showToast(this,text);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        ToastUtils = new ToastUtils(this);
         initVariables();
         initViews(savedInstanceState);
         loadData();

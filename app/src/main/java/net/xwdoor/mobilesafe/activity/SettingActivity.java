@@ -7,6 +7,7 @@ import android.view.View;
 
 import net.xwdoor.mobilesafe.R;
 import net.xwdoor.mobilesafe.base.BaseActivity;
+import net.xwdoor.mobilesafe.utils.PrefUtils;
 import net.xwdoor.mobilesafe.view.SettingItemView;
 
 /**
@@ -35,17 +36,12 @@ public class SettingActivity extends BaseActivity {
             public void onClick(View v) {
                 sivUpdate.setChecked(!sivUpdate.isChecked());
                 //保存相应设置
-
-//                if(sivUpdate.isChecked()){
-//                    //若选中，开启自动更新设置
-//                    sivUpdate.setDesc("自动更新已开启");
-//
-//                }else {
-//                    //关闭自动更新
-//                    sivUpdate.setDesc("自动更新已关闭");
-//                }
+                PrefUtils.putBoolean(PREF_AUTO_UPDATE, sivUpdate.isChecked(), SettingActivity.this);
             }
         });
+
+        boolean autoUpdate = PrefUtils.getBoolean(PREF_AUTO_UPDATE, true, SettingActivity.this);
+        sivUpdate.setChecked(autoUpdate);
     }
 
     @Override

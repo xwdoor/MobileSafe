@@ -26,6 +26,7 @@ import net.xwdoor.mobilesafe.entity.AppInfo;
 import net.xwdoor.mobilesafe.global.Config;
 import net.xwdoor.mobilesafe.net.HttpRequest;
 import net.xwdoor.mobilesafe.net.RequestCallback;
+import net.xwdoor.mobilesafe.utils.PrefUtils;
 
 import java.io.File;
 
@@ -88,7 +89,12 @@ public class SplashActivity extends BaseActivity {
 
                 if (mRemoteAppInfo != null && mRemoteAppInfo.getVersionCode() > mLocalAppInfo.getVersionCode()) {
                     //有更新，弹出升级对话框
-                    showUpdateDialog();
+                    boolean autoUpdate = PrefUtils.getBoolean(PREF_AUTO_UPDATE, true, SplashActivity.this);
+                    if(autoUpdate) {
+                        showUpdateDialog();
+                    }else {
+                        startHomeActivity();
+                    }
                 } else {
                     //无更新，停留一段时间，然后进入主界面
                     long timeEnd = System.currentTimeMillis();
