@@ -14,12 +14,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static final String TAG_LOG = "123123";
     public static final String PREF_AUTO_UPDATE = "auto_update";
     public static final String PREF_PASSWORD = "password";
+    public static final String PREF_CONFIG = "config";
 
 //    protected ToastUtils ToastUtils;
     /** 显示提示框 */
     public void showToast(CharSequence text){
         ToastUtils.showToast(this,text);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

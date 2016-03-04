@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xwdoor="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/TitleBar"
+        android:text="2.手机卡绑定" />
+
+    <TextView
+        style="@style/ContentStyle"
+        android:text="通过绑定sim卡" />
+
+    <TextView
+        style="@style/ContentStyle"
+        android:text="下次重启手机,发现sim卡变化\n就会发送报警短信" />
+
+    <net.xwdoor.mobilesafe.view.SettingItemView
+        android:id="@+id/siv_bind_sim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xwdoor:desc_off="sim卡没有绑定"
+        xwdoor:desc_on="sim卡已绑定"
+        xwdoor:stitle="点击绑定sim卡" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_online" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bind" />
+
+        <Button
+            android:id="@+id/btn_next_page"
+            style="@style/NextPageStyle" />
+
+        <Button
+            android:id="@+id/btn_previous_page"
+            style="@style/PreviousPageStyle" />
+    </RelativeLayout>
+
+</LinearLayout>

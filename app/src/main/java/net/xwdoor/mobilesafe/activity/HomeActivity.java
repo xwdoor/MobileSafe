@@ -101,7 +101,7 @@ public class HomeActivity extends BaseActivity {
                 //判断密码是否为空
                 if (!TextUtils.isEmpty(password)) {
                     if (MD5Utils.encode(password).equals(savedPassword)) {
-
+                        AntiTheftActivity.startAct(HomeActivity.this);
                         dialog.dismiss();
                     } else {
                         showToast("密码错误");

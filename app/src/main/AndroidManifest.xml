@@ -21,6 +21,11 @@
 
         <activity android:name=".activity.HomeActivity"/>
         <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.AntiTheftActivity"/>
+        <activity android:name=".activity.Setup1Activity"/>
+        <activity android:name=".activity.Setup2Activity"/>
+        <activity android:name=".activity.Setup3Activity"/>
+        <activity android:name=".activity.Setup4Activity"/>
     </application>
 
 </manifest>
