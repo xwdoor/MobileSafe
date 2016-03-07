@@ -2,6 +2,7 @@ package net.xwdoor.mobilesafe.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import net.xwdoor.mobilesafe.utils.ToastUtils;
 
@@ -15,6 +16,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static final String PREF_AUTO_UPDATE = "auto_update";
     public static final String PREF_PASSWORD = "password";
     public static final String PREF_CONFIG = "config";
+    public static final String PREF_BIND_SIM = "bind_sim";
+    public static final String PREF_PHONE_NUMBER = "phone_number";
+    public static final String PREF_IS_PROTECT = "is_protect";
 
 //    protected ToastUtils ToastUtils;
     /** 显示提示框 */
@@ -22,6 +26,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         ToastUtils.showToast(this,text);
     }
 
+    /** 打印日志 */
+    public void showLog(String title, String msg){
+        Log.i(TAG_LOG, title + "--->" + msg);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

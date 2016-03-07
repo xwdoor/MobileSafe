@@ -47,4 +47,10 @@ public class PrefUtils {
 		return sp.getInt(key, defValue);
 	}
 
+	public static void remove(String key, Context ctx) {
+		SharedPreferences sp = ctx.getSharedPreferences("config",
+				Context.MODE_PRIVATE);
+		sp.edit().remove(key).apply();
+	}
+
 }

@@ -18,7 +18,7 @@
             android:text="安全号码" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -44,6 +44,7 @@
             android:text="防盗保护是否开启" />
 
         <ImageView
+            android:id="@+id/iv_protect"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"

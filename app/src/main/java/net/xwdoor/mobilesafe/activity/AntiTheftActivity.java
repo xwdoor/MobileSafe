@@ -3,6 +3,9 @@ package net.xwdoor.mobilesafe.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import net.xwdoor.mobilesafe.R;
 import net.xwdoor.mobilesafe.base.BaseActivity;
@@ -32,10 +35,23 @@ public class AntiTheftActivity extends BaseActivity {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        boolean isConfig =PrefUtils.getBoolean(PREF_CONFIG,false,this);
-        if(isConfig) {
+        boolean isConfig = PrefUtils.getBoolean(PREF_CONFIG, false, this);
+        if (isConfig) {
             setContentView(R.layout.activity_anti_theft);
-        }else {
+            TextView tvPhone = (TextView) findViewById(R.id.tv_phone);
+            TextView tvReset = (TextView) findViewById(R.id.tv_reset);
+            ImageView ivProtect = (ImageView) findViewById(R.id.iv_protect);
+
+            tvReset.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //重新进入设置向导
+                    Setup1Activity.startAct(AntiTheftActivity.this);
+                }
+            });
+            tvPhone.setText(PrefUtils.getString(PREF_PHONE_NUMBER, "", this));
+            ivProtect.setImageResource(PrefUtils.getBoolean(PREF_IS_PROTECT, false, this) ? R.drawable.lock : R.drawable.unlock);
+        } else {
             //没有设置过，则进入设置向导
             Setup1Activity.startAct(this);
             finish();

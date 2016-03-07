@@ -112,6 +112,7 @@ public class SplashActivity extends BaseActivity {
             public void onFaile(String errorMsg) {
                 Toast.makeText(SplashActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
                 Log.e(TAG_LOG, "获取版本信息异常--->" + errorMsg);
+                startHomeActivity();
             }
         });
     }
