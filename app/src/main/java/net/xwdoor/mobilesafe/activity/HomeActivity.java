@@ -142,6 +142,7 @@ public class HomeActivity extends BaseActivity {
                 if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(passwordConfirm)) {
                     if (password.equals(passwordConfirm)) {
                         PrefUtils.putString(PREF_PASSWORD, MD5Utils.encode(password), HomeActivity.this);
+                        AntiTheftActivity.startAct(HomeActivity.this);
                         dialog.dismiss();
                     } else {
                         showToast("两次密码不一致");

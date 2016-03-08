@@ -47,6 +47,7 @@ public class AntiTheftActivity extends BaseActivity {
                 public void onClick(View v) {
                     //重新进入设置向导
                     Setup1Activity.startAct(AntiTheftActivity.this);
+                    finish();
                 }
             });
             tvPhone.setText(PrefUtils.getString(PREF_PHONE_NUMBER, "", this));
