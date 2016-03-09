@@ -1,0 +1,11 @@
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-policies>
+        <!-- 远程锁屏权限 -->
+        <force-lock />
+
+        <!-- 远程删除数据 -->
+        <wipe-data />
+    </uses-policies>
+
+</device-admin>

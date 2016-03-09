@@ -24,11 +24,6 @@ public class AntiTheftActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void initVariables() {
 
     }
@@ -52,6 +47,11 @@ public class AntiTheftActivity extends BaseActivity {
             });
             tvPhone.setText(PrefUtils.getString(PREF_PHONE_NUMBER, "", this));
             ivProtect.setImageResource(PrefUtils.getBoolean(PREF_IS_PROTECT, false, this) ? R.drawable.lock : R.drawable.unlock);
+
+            //如果没有激活权限，提示激活
+            if(!mDPM.isAdminActive(mDeviceComponentName)){
+                activeAdmin();
+            }
         } else {
             //没有设置过，则进入设置向导
             Setup1Activity.startAct(this);
@@ -63,4 +63,5 @@ public class AntiTheftActivity extends BaseActivity {
     protected void loadData() {
 
     }
+
 }

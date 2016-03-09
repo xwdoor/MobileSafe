@@ -1,9 +1,13 @@
 package net.xwdoor.mobilesafe.base;
 
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import net.xwdoor.mobilesafe.receiver.AdminReceiver;
 import net.xwdoor.mobilesafe.utils.ToastUtils;
 
 /**
@@ -20,7 +24,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static final String PREF_PHONE_NUMBER = "phone_number";
     public static final String PREF_IS_PROTECT = "is_protect";
 
-//    protected ToastUtils ToastUtils;
+    protected DevicePolicyManager mDPM;
+    protected ComponentName mDeviceComponentName;
+
     /** 显示提示框 */
     public void showToast(CharSequence text){
         ToastUtils.showToast(this,text);
@@ -28,14 +34,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /** 打印日志 */
     public void showLog(String title, String msg){
-        Log.i(TAG_LOG, title + "--->" + msg);
+        Log.i(TAG_LOG, title + "-->" + msg);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        ToastUtils = new ToastUtils(this);
+        // 设备策略管理器
+        mDPM = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
+        // 初始化管理员组件
+        mDeviceComponentName = new ComponentName(this, AdminReceiver.class);
+
         initVariables();
         initViews(savedInstanceState);
         loadData();
@@ -51,4 +61,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void loadData();
 
 
+    /**
+     * 激活超级管理员权限 设置->安全->设备管理器     *
+     */
+    public void activeAdmin() {
+        Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, mDeviceComponentName);
+        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                "手机安全卫士-手机防盗，您的好帮手，值得拥有");
+        startActivity(intent);
+        showToast("请先激活手机防盗的管理员权限");
+    }
 }

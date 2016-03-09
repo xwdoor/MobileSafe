@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">手机卫士</string>
     <string name="app_update">发现新版本</string>
+    <string name="device_admin_description">手机安全卫士-手机防盗，您的好帮手，值得拥有</string>
+    <string name="device_admin">手机安全卫士-手机防盗</string>
 </resources>

@@ -66,6 +66,13 @@ public class Setup4Activity extends BaseActivity {
                 PrefUtils.putBoolean(PREF_IS_PROTECT, isChecked, Setup4Activity.this);
                 cbCheck.setText(isChecked ? "您已开启防盗保护" : "您没有开启防盗保护");
 
+                if(isChecked) {
+                    if (!mDPM.isAdminActive(mDeviceComponentName)) {
+                        activeAdmin();
+                    }
+                }else {
+                    mDPM.removeActiveAdmin(mDeviceComponentName);
+                }
             }
         });
     }
