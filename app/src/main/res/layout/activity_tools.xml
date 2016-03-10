@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/TitleBar"
+        android:text="高级工具" />
+
+    <TextView
+        android:id="@+id/tv_query_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_content"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
+        android:gravity="center_vertical"
+        android:drawablePadding="5dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:onClick="numberQuery"
+        android:clickable="true"
+        android:text="电话归属地查询" />
+
+</LinearLayout>

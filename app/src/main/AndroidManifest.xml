@@ -34,6 +34,8 @@
         <activity android:name=".activity.Setup3Activity" />
         <activity android:name=".activity.Setup4Activity" />
         <activity android:name=".activity.SelectContactActivity" />
+        <activity android:name=".activity.ToolsActivity" />
+        <activity android:name=".activity.AddressQueryActivity" />
 
         <receiver
             android:name=".receiver.BootCompleteReceiver"

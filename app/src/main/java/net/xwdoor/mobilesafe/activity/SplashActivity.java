@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -22,6 +23,7 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 
 import net.xwdoor.mobilesafe.R;
 import net.xwdoor.mobilesafe.base.BaseActivity;
+import net.xwdoor.mobilesafe.db.AddressQuery;
 import net.xwdoor.mobilesafe.entity.AppInfo;
 import net.xwdoor.mobilesafe.global.Config;
 import net.xwdoor.mobilesafe.net.HttpRequest;
@@ -29,6 +31,9 @@ import net.xwdoor.mobilesafe.net.RequestCallback;
 import net.xwdoor.mobilesafe.utils.PrefUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * 闪屏界面
@@ -71,6 +76,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void loadData() {
         getAppInfoFromServer();
+        copyDb(AddressQuery.DB_NAME);
     }
 
     /**
@@ -90,9 +96,9 @@ public class SplashActivity extends BaseActivity {
                 if (mRemoteAppInfo != null && mRemoteAppInfo.getVersionCode() > mLocalAppInfo.getVersionCode()) {
                     //有更新，弹出升级对话框
                     boolean autoUpdate = PrefUtils.getBoolean(PREF_AUTO_UPDATE, true, SplashActivity.this);
-                    if(autoUpdate) {
+                    if (autoUpdate) {
                         showUpdateDialog();
-                    }else {
+                    } else {
                         startHomeActivity();
                     }
                 } else {
@@ -234,5 +240,42 @@ public class SplashActivity extends BaseActivity {
             e.printStackTrace();
         }
         return appInfo;
+    }
+
+    /**
+     * 拷贝数据库
+     * @param dbName 数据库文件名
+     */
+    private void copyDb(String dbName) {
+        AssetManager assets = getAssets();
+        File filesDir = getFilesDir();
+        File desFile = new File(filesDir, dbName);
+
+        if(desFile.exists()){
+            showLog("","数据库已存在");
+            return;
+        }
+        InputStream in = null;
+        FileOutputStream out = null;
+        try {
+            //in=context.getClass().getClassLoader().getResourceAsStream("assets/"+names[i]);
+            in = assets.open(dbName);
+            out = new FileOutputStream(desFile);
+            int len = 0;
+            byte[] buffer = new byte[1024];
+            while ((len = in.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
+                out.flush();
+            }
+        } catch (IOException e) {
+            showLog("copyDb error",e.getMessage());
+        } finally {
+            try {
+                in.close();
+                out.close();
+            } catch (IOException e) {
+                showLog("copyDb io error",e.getMessage());
+            }
+        }
     }
 }
