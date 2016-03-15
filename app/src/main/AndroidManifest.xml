@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!--<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />-->
+    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +38,7 @@
         <activity android:name=".activity.SelectContactActivity" />
         <activity android:name=".activity.ToolsActivity" />
         <activity android:name=".activity.AddressQueryActivity" />
+        <activity android:name=".activity.DragViewActivity" />
 
         <receiver
             android:name=".receiver.BootCompleteReceiver"
@@ -60,12 +63,14 @@
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin" />
+
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
 
         <service android:name=".service.LocationService" />
+        <service android:name=".service.AddressService" />
     </application>
 
 </manifest>

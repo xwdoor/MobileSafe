@@ -19,4 +19,22 @@
         xwdoor:stitle="自动更新设置"
         xwdoor:desc_on="自动更新已开启"
         xwdoor:desc_off="自动更新已关闭"/>
+
+    <net.xwdoor.mobilesafe.view.SettingItemView
+        android:id="@+id/siv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xwdoor:stitle="电话归属地显示设置"
+        xwdoor:desc_on="归属地显示已开启"
+        xwdoor:desc_off="归属地显示已关闭"/>
+
+    <net.xwdoor.mobilesafe.view.SettingClickView
+        android:id="@+id/scv_address_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <net.xwdoor.mobilesafe.view.SettingClickView
+        android:id="@+id/scv_address_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

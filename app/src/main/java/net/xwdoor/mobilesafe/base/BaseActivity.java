@@ -23,6 +23,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static final String PREF_BIND_SIM = "bind_sim";
     public static final String PREF_PHONE_NUMBER = "phone_number";
     public static final String PREF_IS_PROTECT = "is_protect";
+    public static final String PREF_ADDRESS_STYLE = "address_style";
+    public static final String PREF_LAST_X = "lastX";
+    public static final String PREF_LAST_Y = "lastY";
 
     protected DevicePolicyManager mDPM;
     protected ComponentName mDeviceComponentName;

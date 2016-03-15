@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0a000000">
+
+    <TextView
+        android:id="@+id/tv_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/call_locate_blue"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="按住提示框拖动到任意位置,按手机返回键立即生效"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/call_locate_blue"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="按住提示框拖动到任意位置,按手机返回键立即生效"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:visibility="invisible" />
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_drag"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="90dp"-->
+    <!--android:src="@drawable/drag" />-->
+
+    <TextView
+        android:id="@+id/tv_drag_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/call_locate_white"
+        android:drawableLeft="@android:drawable/ic_menu_call"
+        android:gravity="center"
+        android:text="未知号码"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

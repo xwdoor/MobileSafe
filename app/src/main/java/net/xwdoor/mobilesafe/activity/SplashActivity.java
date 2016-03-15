@@ -252,7 +252,7 @@ public class SplashActivity extends BaseActivity {
         File desFile = new File(filesDir, dbName);
 
         if(desFile.exists()){
-            showLog("","数据库已存在");
+            showLog("copyDb()","数据库已存在");
             return;
         }
         InputStream in = null;
