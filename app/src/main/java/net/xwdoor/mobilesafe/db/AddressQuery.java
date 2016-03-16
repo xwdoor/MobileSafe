@@ -85,6 +85,7 @@ public class AddressQuery {
                     break;
             }
         }
+        database.close();//关闭数据库
         return address;
     }
 }

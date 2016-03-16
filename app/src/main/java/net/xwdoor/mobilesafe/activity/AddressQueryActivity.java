@@ -3,6 +3,8 @@ package net.xwdoor.mobilesafe.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +43,25 @@ public class AddressQueryActivity extends BaseActivity {
             public void onClick(View v) {
                 String number = etNumber.getText().toString().trim();
                 showLog("查询号码",number);
+                String address = AddressQuery.getAddress(AddressQueryActivity.this, number);
+                tvResult.setText(address);
+            }
+        });
+
+        etNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String number = s.toString().trim();
                 String address = AddressQuery.getAddress(AddressQueryActivity.this, number);
                 tvResult.setText(address);
             }

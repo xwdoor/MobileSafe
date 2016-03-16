@@ -39,6 +39,7 @@
         <activity android:name=".activity.ToolsActivity" />
         <activity android:name=".activity.AddressQueryActivity" />
         <activity android:name=".activity.DragViewActivity" />
+        <activity android:name=".activity.BlackNumberActivity" />
 
         <receiver
             android:name=".receiver.BootCompleteReceiver"

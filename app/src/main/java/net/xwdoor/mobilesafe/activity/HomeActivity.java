@@ -56,6 +56,9 @@ public class HomeActivity extends BaseActivity {
                     case 0://手机防盗界面
                         showSafeDialog();
                         break;
+                    case 1://通讯卫士
+                        BlackNumberActivity.startAct(HomeActivity.this);
+                        break;
                     case 7://高级工具
                         ToolsActivity.startAct(HomeActivity.this);
                         break;
