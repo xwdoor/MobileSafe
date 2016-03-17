@@ -1,15 +1,19 @@
 package net.xwdoor.mobilesafe.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 
 import net.xwdoor.mobilesafe.R;
 import net.xwdoor.mobilesafe.adapter.BlackNumberAdapter;
@@ -22,7 +26,7 @@ import java.util.Random;
 
 /**
  * 通讯卫士：黑名单
- *
+ * <p>
  * Created by XWdoor on 2016/3/16 016 14:06.
  * 博客：http://blog.csdn.net/xwdoor
  */
@@ -98,6 +102,13 @@ public class BlackNumberActivity extends BaseActivity {
 
             }
         });
+
+        btnAddNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addBlackNumber();
+            }
+        });
     }
 
     @Override
@@ -141,5 +152,56 @@ public class BlackNumberActivity extends BaseActivity {
                 mNumberDao.add("135123456" + i, mode);
             }
         }
+    }
+
+    /**
+     * 添加黑名单
+     */
+    private void addBlackNumber() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        View view = View.inflate(this, R.layout.dialog_add_black_number, null);
+        final EditText etNumber = (EditText) view.findViewById(R.id.et_number);
+        Button btnOk = (Button) view.findViewById(R.id.btn_ok);
+        Button btnCancel = (Button) view.findViewById(R.id.btn_cancel);
+        final RadioGroup rgGroup = (RadioGroup) view.findViewById(R.id.rg_group);
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String number = etNumber.getText().toString().trim();
+                if (!TextUtils.isEmpty(number)) {
+                    int checkedRadioButtonId = rgGroup.getCheckedRadioButtonId();// 获取当前被选中radiobutton的id
+
+                    int mode = 1;
+                    switch (checkedRadioButtonId) {
+                        case R.id.rb_phone:
+                            mode = 1;
+                            break;
+                        case R.id.rb_sms:
+                            mode = 2;
+                            break;
+                        case R.id.rb_all:
+                            mode = 3;
+                            break;
+                        default:
+                            break;
+                    }
+                    mNumberDao.add(number, mode);
+                    // 在第一个位置添加item对象
+                    mList.add(0, new BlackNumberInfo(number, mode));
+                    mAdapter.notifyDataSetChanged();
+                    dialog.dismiss();
+                }
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setView(view);
+        dialog.show();
     }
 }

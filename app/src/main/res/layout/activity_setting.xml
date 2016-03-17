@@ -37,4 +37,12 @@
         android:id="@+id/scv_address_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <net.xwdoor.mobilesafe.view.SettingItemView
+        android:id="@+id/siv_black_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xwdoor:stitle="黑名单拦截设置"
+        xwdoor:desc_on="黑名单拦截已开启"
+        xwdoor:desc_off="黑名单拦截已关闭"/>
 </LinearLayout>

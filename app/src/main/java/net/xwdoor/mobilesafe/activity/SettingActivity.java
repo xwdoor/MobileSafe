@@ -10,6 +10,7 @@ import android.view.View;
 import net.xwdoor.mobilesafe.R;
 import net.xwdoor.mobilesafe.base.BaseActivity;
 import net.xwdoor.mobilesafe.service.AddressService;
+import net.xwdoor.mobilesafe.service.BlackNumberService;
 import net.xwdoor.mobilesafe.utils.PrefUtils;
 import net.xwdoor.mobilesafe.utils.ServiceStatusUtils;
 import net.xwdoor.mobilesafe.view.SettingClickView;
@@ -44,6 +45,31 @@ public class SettingActivity extends BaseActivity {
         initUpdate();
 
         initAddress();
+
+        initBlackNumber();
+    }
+
+    /** 初始化黑名单设置 */
+    private void initBlackNumber() {
+        final SettingItemView sivBlackNumber = (SettingItemView) findViewById(R.id.siv_black_number);
+        // 根据服务是否运行来更新checkbox
+        boolean serviceRunning = ServiceStatusUtils.isServiceRunning(this,
+                "net.xwdoor.mobilesafe.service.BlackNumberService");
+        sivBlackNumber.setChecked(serviceRunning);
+
+        sivBlackNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sivBlackNumber.setChecked(!sivBlackNumber.isChecked());
+                Intent service = new Intent(getApplicationContext(),
+                        BlackNumberService.class);
+                if(sivBlackNumber.isChecked()){
+                    startService(service);
+                }else {
+                    stopService(service);
+                }
+            }
+        });
     }
 
     /**
